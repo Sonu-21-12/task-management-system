@@ -130,7 +130,9 @@ function TaskDetails() {
             const response =
                 await createComment(
                     id,
-                    comment.trim()
+            {  
+                comment :  comment.trim()
+                }
                 );
 
             console.log(
