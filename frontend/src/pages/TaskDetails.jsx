@@ -115,7 +115,7 @@ function TaskDetails() {
     // Add comment
     // =========================
 
-   const handleComment = async (e) => {
+    const handleComment = async (e) => {
 
     e.preventDefault();
 
@@ -158,6 +158,7 @@ function TaskDetails() {
         setCommentLoading(false);
     }
 };
+
 
 
     // =========================
