@@ -115,52 +115,49 @@ function TaskDetails() {
     // Add comment
     // =========================
 
-    const handleComment = async (e) => {
+   const handleComment = async (e) => {
 
-        e.preventDefault();
+    e.preventDefault();
 
-        if (!comment.trim()) {
-            return;
-        }
+    if (!comment.trim()) {
+        return;
+    }
 
-        try {
+    try {
 
-            setCommentLoading(true);
+        setCommentLoading(true);
 
-            const response =
-                await createComment(
-                    id,
-            {  
-                comment :  comment.trim()
-                }
-                );
-
-            console.log(
-                "Create comment response:",
-                response
-            );
-
-            if (response.success) {
-
-                setComment("");
-
-                await loadComments();
-
+        const response = await createComment(
+            id,
+            {
+                comment: comment.trim()
             }
+        );
 
-        } catch (error) {
+        console.log(
+            "Create comment response:",
+            response
+        );
 
-            console.error(
-                "Create comment error:",
-                error
-            );
+        if (response.success) {
 
-        } finally {
+            setComment("");
 
-            setCommentLoading(false);
+            await loadComments();
         }
 
-    };
+    } catch (error) {
+
+        console.error(
+            "Create comment error:",
+            error
+        );
+
+    } finally {
+
+        setCommentLoading(false);
+    }
+};
 
 
     // =========================

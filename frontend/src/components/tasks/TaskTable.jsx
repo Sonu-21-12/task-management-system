@@ -36,7 +36,8 @@ function TaskTable({ tasks, onDelete }) {
     if (!tasks || tasks.length === 0) {
 
         return (
-            <div className="bg-white rounded-xl shadow-sm p-10 text-center">
+            <div className="bg-white rounded-xl s
+            dow-sm p-10 text-center">
                 <p className="text-gray-500">
                     No tasks found.
                 </p>
