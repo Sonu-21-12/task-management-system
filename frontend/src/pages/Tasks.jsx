@@ -204,15 +204,17 @@ function Tasks() {
     // Delete
     // ---------------------------------
 
-   const handleDelete = async (task) => {
+   const handleDelete = async (taskId) => {
 
-    console.log("FULL TASK OBJECT:", task);
-    console.log("TASK ID:", task?.id);
+    console.log("DELETE TASK ID:", taskId);
 
-    const confirmed =
-        window.confirm(
-            `Are you sure you want to delete "${task.title}"?`
-        );
+    const task = tasks.find(
+        (item) => item.id === taskId
+    );
+
+    const confirmed = window.confirm(
+        `Are you sure you want to delete "${task?.title}"?`
+    );
 
     if (!confirmed) {
         return;
@@ -220,11 +222,11 @@ function Tasks() {
 
     try {
 
-        await deleteTask(task.id);
+        await deleteTask(taskId);
 
         setTasks((previous) =>
             previous.filter(
-                (item) => item.id !== task.id
+                (item) => item.id !== taskId
             )
         );
 
@@ -243,7 +245,6 @@ function Tasks() {
         );
     }
 };
-
 
     // ---------------------------------
     // Error
