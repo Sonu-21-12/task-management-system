@@ -206,7 +206,7 @@ function TaskTable({ tasks, onDelete }) {
         console.log("DELETE TASK OBJECT:", task);
         console.log("DELETE TASK ID:", task.id);
 
-        onDelete(task.id);
+        onDelete(task);
     }}
     className="px-3 py-2 text-sm rounded-lg bg-red-100 hover:bg-red-200 text-red-700"
 >
