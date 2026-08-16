@@ -204,49 +204,45 @@ function Tasks() {
     // Delete
     // ---------------------------------
 
-    const handleDelete = async (task) => {
+   const handleDelete = async (task) => {
 
-        const confirmed =
-            window.confirm(
-                `Are you sure you want to delete "${task.title}"?`
-            );
+    console.log("FULL TASK OBJECT:", task);
+    console.log("TASK ID:", task?.id);
 
+    const confirmed =
+        window.confirm(
+            `Are you sure you want to delete "${task.title}"?`
+        );
 
-        if (!confirmed) {
-            return;
-        }
+    if (!confirmed) {
+        return;
+    }
 
+    try {
 
-        try {
+        await deleteTask(task.id);
 
-            await deleteTask(task.id);
+        setTasks((previous) =>
+            previous.filter(
+                (item) => item.id !== task.id
+            )
+        );
 
+        loadTasks();
 
-            setTasks((previous) =>
-                previous.filter(
-                    (item) =>
-                        item.id !== task.id
-                )
-            );
+    } catch (err) {
 
+        console.error(
+            "Delete task error:",
+            err
+        );
 
-            loadTasks();
-
-        } catch (err) {
-
-            console.error(
-                "Delete task error:",
-                err
-            );
-
-
-            alert(
-                err.response?.data?.message ||
-                "Unable to delete task."
-            );
-
-        }
-    };
+        alert(
+            err.response?.data?.message ||
+            "Unable to delete task."
+        );
+    }
+};
 
 
     // ---------------------------------
